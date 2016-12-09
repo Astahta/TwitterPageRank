@@ -32,7 +32,7 @@ public class FinishPageRank extends Configured implements Tool{
 	Path out = new Path(args[1]);
 	FileInputFormat.setInputPaths(job, in);
 	FileOutputFormat.setOutputPath(job, out);
-	job.setJobName(this.getClass().getName());
+	job.setJobName("Fiqie|Finish");
 	job.setMapperClass(SortingPageRankMapper.class);
 	job.setReducerClass(SortingPageRankReducer.class);
 	job.setInputFormat(KeyValueTextInputFormat.class);

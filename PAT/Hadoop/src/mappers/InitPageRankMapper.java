@@ -6,6 +6,7 @@
 package mappers;
 
 import java.io.IOException;
+import java.util.StringTokenizer;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.MapReduceBase;
@@ -20,9 +21,8 @@ public class InitPageRankMapper extends MapReduceBase implements Mapper<Text, Te
 
     @Override
     public void map(Text key, Text value, OutputCollector<Text, Text> oc, Reporter rprtr) throws IOException {
-	String [] temp = value.toString().split("\t");
-        //value: user\tfollower\n
-        oc.collect(new Text(temp[1]), new Text(temp[0]));
+      	//value: user\tfollower\n
+        oc.collect(value, key);
         //key: f1, value: u1
     }
     

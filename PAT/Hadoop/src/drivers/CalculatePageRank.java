@@ -6,7 +6,6 @@
 package drivers;
 
 import mappers.CalculatePageRank1Mapper;
-import mappers.CalculatePageRankMapper;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
@@ -19,7 +18,6 @@ import org.apache.hadoop.mapred.KeyValueTextInputFormat;
 import org.apache.hadoop.mapred.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import reducers.CalculatePageRank1Reducer;
-import reducers.CalculatePageRankReducer;
 
 /**
  *
@@ -34,7 +32,7 @@ public class CalculatePageRank extends Configured implements Tool{
 	Path out = new Path(args[1]);
 	FileInputFormat.setInputPaths(job, in);
 	FileOutputFormat.setOutputPath(job, out);
-	job.setJobName(this.getClass().getName());
+	job.setJobName("Fiqie|Calculate");
 	job.setMapperClass(CalculatePageRank1Mapper.class);
 	job.setReducerClass(CalculatePageRank1Reducer.class);
 	job.setInputFormat(KeyValueTextInputFormat.class);

@@ -20,12 +20,9 @@ public class SortingPageRankMapper extends MapReduceBase implements Mapper<Text,
     //input: fi[ ]u1,u2,u3,3,PR 
     @Override
     public void map(Text key, Text value, OutputCollector<Text, Text> oc, Reporter rprtr) throws IOException {
-        String [] temp = value.toString().split(" ");
-        String u = temp[0]; 
-        if(temp.length > 1){
-            String [] val = temp[1].split(",");
-            oc.collect(new Text(val[val.length-1]), new Text(u));
-        }
+        String u = key.toString(); 
+        String [] val = value.toString().split(",");
+        oc.collect(new Text(val[val.length-1]), new Text(u));
     }
     
 }

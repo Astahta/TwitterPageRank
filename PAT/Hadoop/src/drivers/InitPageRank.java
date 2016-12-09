@@ -33,7 +33,7 @@ public class InitPageRank extends Configured implements Tool{
 	Path out = new Path(args[1]);
 	FileInputFormat.setInputPaths(job, in);
 	FileOutputFormat.setOutputPath(job, out);
-	job.setJobName(this.getClass().getName());
+	job.setJobName("Fiqie|Init");
 	job.setMapperClass(InitPageRankMapper.class);
 	job.setReducerClass(InitPageRankReducer.class);
 	job.setInputFormat(KeyValueTextInputFormat.class);
