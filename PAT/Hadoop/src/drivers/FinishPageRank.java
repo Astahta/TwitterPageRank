@@ -18,6 +18,7 @@ import org.apache.hadoop.mapred.KeyValueTextInputFormat;
 import org.apache.hadoop.mapred.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import reducers.SortingPageRankReducer;
+import org.apache.hadoop.io.LongWritable.DecreasingComparator;
 
 /**
  *
@@ -33,6 +34,7 @@ public class FinishPageRank extends Configured implements Tool{
 	FileInputFormat.setInputPaths(job, in);
 	FileOutputFormat.setOutputPath(job, out);
 	job.setJobName("Fiqie|Finish");
+        job.setOutputKeyComparatorClass(DecreasingComparator.class);
 	job.setMapperClass(SortingPageRankMapper.class);
 	job.setReducerClass(SortingPageRankReducer.class);
 	job.setInputFormat(KeyValueTextInputFormat.class);
